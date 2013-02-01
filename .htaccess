@@ -1,0 +1,177 @@
+# Helicon ISAPI_Rewrite configuration file
+# Version 3.1.0.67
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^index$    index\.php [QSA,L]
+RewriteRule ^welcome$  index\.php [QSA,L]
+RewriteRule ^links$  link\.php [QSA,L]
+RewriteRule ^album$  album\.php [QSA,L]
+RewriteRule ^shop$   shop\.php [QSA,L]
+RewriteRule ^second$   second\.php [QSA,L]
+RewriteRule ^exchange$  exchange\.php [QSA,L]
+RewriteRule ^invite$  invite\.php [QSA,L]
+RewriteRule ^event$  event\.php [QSA,L]
+
+#会员空间
+RewriteRule ^u/all$  u\.php\?action=all [QSA,L]
+RewriteRule ^u/message/(\d+)$  u\.php\?action=message&page=$1 [QSA,L]
+RewriteRule ^u/message$  u\.php\?action=message [QSA,L]
+RewriteRule ^u/([a-z]+)/([a-z]+)/(\d+)/(\d+)$  u\.php\?action=$1&$2=$3&page=$4 [QSA,L]
+RewriteRule ^u/([a-z]+)/([a-z]+)/(\d+)$  u\.php\?action=$1&$2=$3 [QSA,L]
+
+RewriteRule ^u/(\d+)/([a-z]+)/t(\d+)/(\d+)$  u\.php\?action=$2&uid=$1&type=$3&page=$4 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/t(\d+)$  u\.php\?action=$2&uid=$1&type=$3[QSA,L]
+
+RewriteRule ^u/(\d+)/([a-z]+)/s(\d+)/(\d+)$  u\.php\?action=$2&uid=$1&status=$3&page=$4 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/s(\d+)$  u\.php\?action=$2&uid=$1&status=$3[QSA,L]
+
+RewriteRule ^u/(\d+)/([a-z]+)/([a-z]+)/([a-z]+)/(\d+)$  u\.php\?action=$2&uid=$1&type=$3&sort=$4&page=$5 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/([a-z]+)/([a-z]+)$  u\.php\?action=$2&uid=$1&type=$3&sort=$4 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/([a-z]+)/(\d+)$  u\.php\?action=$2&uid=$1&type=$3&page=$4 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/([a-z]+)$  u\.php\?action=$2&uid=$1&type=$3 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)/(\d+)$  u\.php\?action=$2&uid=$1&page=$3 [QSA,L]
+RewriteRule ^u/(\d+)/([a-z]+)$  u\.php\?action=$2&uid=$1 [QSA,L]
+RewriteRule ^u/(\d+)/(\d+)$  u\.php\?action=index&uid=$1&page=$2 [QSA,L]
+RewriteRule ^u/(\d+)$  u\.php\?action=index&uid=$1 [QSA,L]
+
+RewriteRule ^me$  u\.php\?action=me [QSA,L]
+
+#club模块
+RewriteRule ^club/newtopic/(\d+)$  club\.php\?action=newtopic&fid=$1 [QSA,L]
+RewriteRule ^club/newtopic$  club\.php\?action=newtopic [QSA,L]
+
+RewriteRule ^club/detail/(\d+)/(\d+)$  club\.php\?action=detail&tid=$1&page=$2 [QSA,L]
+RewriteRule ^club/detail/(\d+)$  club\.php\?action=detail&tid=$1 [QSA,L]
+
+RewriteRule ^club/best/(\d+)/([a-z]+)/(\d+)$  club\.php\?action=best&fid=$1&sort=$2&page=$3 [QSA,L]
+RewriteRule ^club/best/(\d+)/([a-z]+)$  club\.php\?action=best&fid=$1&sort=$2 [QSA,L]
+RewriteRule ^club/best/(\d+)/(\d+)$  club\.php\?action=best&fid=$1&page=$2 [QSA,L]
+RewriteRule ^club/best/(\d+)$  club\.php\?action=best&fid=$1 [QSA,L]
+
+RewriteRule ^club/(\d+)/([a-z]+)/(\d+)$  club\.php\?action=forum&fid=$1&sort=$2&page=$3 [QSA,L]
+RewriteRule ^club/(\d+)/([a-z]+)$  club\.php\?action=forum&fid=$1&sort=$2 [QSA,L]
+RewriteRule ^club/(\d+)/(\d+)$  club\.php\?action=forum&fid=$1&page=$2 [QSA,L]
+RewriteRule ^club/(\d+)$  club\.php\?action=forum&fid=$1 [QSA,L]
+
+RewriteRule ^club$  club\.php\?action=index [QSA,L]
+
+#ask模块
+RewriteRule ^ask/newtopic/(\d+)$  ask\.php\?action=newtopic&aid=$1 [QSA,L]
+RewriteRule ^ask/newtopic$  ask\.php\?action=newtopic [QSA,L]
+
+RewriteRule ^ask/(\d+)/([a-z]+)/(\d+)/$  ask\.php\?action=forum&aid=$1&type=$2&page=$3 [QSA,L]
+RewriteRule ^ask/(\d+)/([a-z]+)$  ask\.php\?action=forum&aid=$1&type=$2 [QSA,L]
+RewriteRule ^ask/(\d+)/(\d+)$  ask\.php\?action=forum&aid=$1&page=$2 [QSA,L]
+RewriteRule ^ask/(\d+)$  ask\.php\?action=forum&aid=$1 [QSA,L]
+
+RewriteRule ^ask/detail/(\d+)/(\d+)$  ask\.php\?action=detail&tid=$1&page=$2 [QSA,L]
+RewriteRule ^ask/detail/(\d+)$  ask\.php\?action=detail&tid=$1 [QSA,L]
+
+RewriteRule ^ask$  ask\.php\?action=index [QSA,L]
+
+RewriteRule ^style/(new|pop|hot7|hot30)/([^\/]+)/(\d+)$  style\.php?action=index&sort=$1&tag=$2&page=$3 [QSA,L]
+RewriteRule ^style/(new|pop|hot7|hot30)/(\d+)$  style\.php?action=index&sort=$1&page=$2 [QSA,L]
+RewriteRule ^style/(new|pop|hot7|hot30)/([^\/]+)$  style\.php?action=index&sort=$1&tag=$2 [QSA,L]
+RewriteRule ^style/(new|pop|hot7|hot30)$  style\.php?action=index&sort=$1 [QSA,L]
+RewriteRule ^style/([^\/]+)/(\d+)$  style\.php?action=index&tag=$1&page=$2 [QSA,L]
+RewriteRule ^style/(\d+)$  style\.php?action=index&page=$1 [QSA,L]
+RewriteRule ^style/([^\/]+)$  style\.php?action=index&tag=$1 [QSA,L]
+RewriteRule ^style$  style\.php?action=index [QSA,L]
+
+#产品筛选页
+RewriteRule ^book/(shopping|dapei|look)/s(\d+)/([^\/]+)$  book\.php?action=$1&sid=$2&tag=$3 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/s(\d+)$  book\.php?action=$1&sid=$2 [QSA,L]
+
+RewriteRule ^book/(shopping|dapei|look)/(new|pop|hot7|hot30)/([^\/]+)/(\d+)$  book\.php?action=$1&sort=$2&tag=$3&page=$4 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/(new|pop|hot7|hot30)/(\d+)$  book\.php?action=$1&sort=$2&page=$3 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/(new|pop|hot7|hot30)/([^\/]+)$  book\.php?action=$1&sort=$2&tag=$3 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/(new|pop|hot7|hot30)$  book\.php?action=$1&sort=$2 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/([^\/]+)/(\d+)$  book\.php?action=$1&tag=$2&page=$3 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/(\d+)$  book\.php?action=$1&page=$2 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)/([^\/]+)$  book\.php?action=$1&tag=$2 [QSA,L]
+RewriteRule ^book/(shopping|dapei|look)$  book\.php?action=$1 [QSA,L]
+
+RewriteRule ^book/([a-z]+)/(new|pop|hot7|hot30)/([^\/]+)/(\d+)$  book\.php?action=cate&cate=$1&sort=$2&tag=$3&page=$4 [QSA,L]
+RewriteRule ^book/([a-z]+)/(new|pop|hot7|hot30)/(\d+)$  book\.php?action=cate&cate=$1&sort=$2&page=$3 [QSA,L]
+RewriteRule ^book/([a-z]+)/(new|pop|hot7|hot30)/([^\/]+)$  book\.php?action=cate&cate=$1&sort=$2&tag=$3 [QSA,L]
+RewriteRule ^book/([a-z]+)/(new|pop|hot7|hot30)$  book\.php?action=cate&cate=$1&sort=$2 [QSA,L]
+RewriteRule ^book/([a-z]+)/([^\/]+)/(\d+)$  book\.php?action=cate&cate=$1&tag=$2&page=$3 [QSA,L]
+RewriteRule ^book/([a-z]+)/(\d+)$  book\.php?action=cate&cate=$1&page=$2 [QSA,L]
+RewriteRule ^book/([a-z]+)/([^\/]+)$  book\.php?action=cate&cate=$1&tag=$2 [QSA,L]
+RewriteRule ^book/([a-z]+)$  book\.php?action=cate&cate=$1 [QSA,L]
+
+#分享详细页
+RewriteRule ^note/(\d+)/(g|m)/(\d+)$  note\.php?action=$2&sid=$1&id=$3 [QSA,L]
+RewriteRule ^note/(\d+)$  note\.php?action=index&sid=$1 [QSA,L]
+
+#勋章
+RewriteRule ^medal/u/uid/(\d+)$  medal\.php\?action=u&uid=$1 [QSA,L]
+RewriteRule ^medal/apply/mid/(\d+)$  medal\.php\?action=apply&mid=$1 [QSA,L]
+RewriteRule ^medal/index/type/(\d+)/uid/(\d+)$  medal\.php?action=index&type=$1&uid=$2 [QSA,L]
+RewriteRule ^medal/index/type/(\d+)$  medal\.php?action=index&type=$1 [QSA,L]
+RewriteRule ^medal/index/uid/(\d+)$  medal\.php?action=index&uid=$1 [QSA,L]
+RewriteRule ^medal$  medal\.php?action=index [QSA,L]
+
+#达人
+RewriteRule ^daren/(\d+)$  daren\.php\?action=index&page=$1 [QSA,L]
+RewriteRule ^daren$  daren\.php?action=index [QSA,L]
+RewriteRule ^daren/all/(\d+)$  daren\.php\?action=all&page=$1 [QSA,L]
+RewriteRule ^daren/all$  daren\.php?action=all [QSA,L]
+
+#杂志社
+RewriteRule ^album/category/c(\d+)/(hot|new)/(\d+)$  album\.php\?action=category&id=$1&sort=$2&page=$3 [QSA,L]
+RewriteRule ^album/category/c(\d+)/(hot|new)$  album\.php\?action=category&id=$1&sort=$2 [QSA,L]
+RewriteRule ^album/category/c(\d+)/(\d+)$  album\.php\?action=category&id=$1&page=$2 [QSA,L]
+RewriteRule ^album/category/c(\d+)$  album\.php\?action=category&id=$1 [QSA,L]
+
+RewriteRule ^album/show/a(\d+)/s(\d+)/t(\d+)/(\d+)$  album\.php\?action=show&id=$1&sid=$2&type=$3&page=$4 [QSA,L]
+RewriteRule ^album/show/a(\d+)/s(\d+)/t(\d+)$  album\.php\?action=show&id=$1&sid=$2&type=$3 [QSA,L]
+RewriteRule ^album/show/a(\d+)/s(\d+)/(\d+)$  album\.php\?action=show&id=$1&sid=$2&page=$3 [QSA,L]
+RewriteRule ^album/show/a(\d+)/t(\d+)/(\d+)$  album\.php\?action=show&id=$1&type=$2&page=$3 [QSA,L]
+RewriteRule ^album/show/a(\d+)/s(\d+)$  album\.php\?action=show&id=$1&sid=$2 [QSA,L]
+RewriteRule ^album/show/a(\d+)/t(\d+)$  album\.php\?action=show&id=$1&type=$2 [QSA,L]
+RewriteRule ^album/show/a(\d+)/(\d+)$  album\.php\?action=show&id=$1&page=$2 [QSA,L]
+RewriteRule ^album/show/a(\d+)$  album\.php\?action=show&id=$1 [QSA,L]
+
+RewriteRule ^album/(hot|new)/(\d+)$  album\.php\?action=index&sort=$1&page=$2 [QSA,L]
+RewriteRule ^album/(hot|new)$  album\.php\?action=index&sort=$1 [QSA,L]
+RewriteRule ^album/(\d+)$  album\.php\?action=index&page=$1 [QSA,L]
+
+RewriteRule ^album/edit/(\d+)$  album\.php\?action=edit&id=$1 [QSA,L]
+
+#闲置
+RewriteRule ^second/s(\d+)/c(\d+)/(\d+)$  second\.php\?action=index&sid=$1&cid=$2&page=$3 [QSA,L]
+RewriteRule ^second/s(\d+)/c(\d+)$  second\.php\?action=index&sid=$1&cid=$2 [QSA,L]
+RewriteRule ^second/s(\d+)/(\d+)$  second\.php\?action=index&sid=$1&page=$2 [QSA,L]
+RewriteRule ^second/c(\d+)/(\d+)$  second\.php\?action=index&cid=$1&page=$2 [QSA,L]
+RewriteRule ^second/s(\d+)$  second\.php\?action=index&sid=$1 [QSA,L]
+RewriteRule ^second/c(\d+)$  second\.php\?action=index&cid=$1 [QSA,L]
+
+#好店 
+RewriteRule ^shop/c(\d+)/(\d+)$  shop\.php\?action=index&cid=$1&page=$2 [QSA,L]
+RewriteRule ^shop/c(\d+)$  shop\.php\?action=index&cid=$1 [QSA,L]
+RewriteRule ^shop/(\d+)$  shop\.php\?action=index&page=$1 [QSA,L]
+RewriteRule ^shop/show/s(\d+)/(\d+)$  shop\.php\?action=show&id=$1&page=$2 [QSA,L]
+RewriteRule ^shop/show/s(\d+)$  shop\.php\?action=show&id=$1 [QSA,L]
+
+#好店 
+RewriteRule ^exchange/(\d+)$  exchange\.php\?action=index&page=$1 [QSA,L]
+
+#主题
+RewriteRule ^event/(\d+)/(\d+)$  event\.php?action=detail&id=$1&page=$2 [QSA,L]
+RewriteRule ^event/(\d+)$  event\.php?action=detail&id=$1 [QSA,L]
+RewriteRule ^event/(\w+)/(\w+)$  event\.php?action=$1&type=$2 [QSA,L]
+RewriteRule ^event/(\w+)/(\w+)/(\w+)$  event\.php?action=$1&type=$2&order=$3 [QSA,L]
+RewriteRule ^event/(\w+)/(\w+)/(\w+)/(\d+)$  event\.php?action=$1&type=$2&order=$3&page=$4 [QSA,L]
+RewriteRule ^event/(\w+)$  event\.php?action=$1 [QSA,L]
+
+#广告
+RewriteRule ^adv/(\d+)$  adv\.php\?action=show&id=$1 [QSA,L]
+
+#其他
+RewriteRule ^([a-z]+)/([a-z]+)$  $1\.php\?action=$2 [QSA,L]
+</IfModule>
